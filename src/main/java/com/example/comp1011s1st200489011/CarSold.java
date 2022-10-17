@@ -2,6 +2,7 @@ package com.example.comp1011s1st200489011;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -66,25 +67,6 @@ public class CarSold {
     }
 
     public void setDateSold(Date dateSold) {
-        SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-        Date dateCurrent;
-        Date dSold;
-        try {
-            dateCurrent = sdformat.parse(String.valueOf(date));
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            dSold = sdformat.parse(String.valueOf(dateSold));
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-        if (dateCurrent.after(dSold)) {
             this.dateSold = dateSold;
-        } else {
-            System.out.println("DateSold must not pass the current date");
-        }
-
     }
 }
