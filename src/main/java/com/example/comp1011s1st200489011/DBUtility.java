@@ -1,6 +1,7 @@
 package com.example.comp1011s1st200489011;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -34,5 +35,26 @@ public class DBUtility {
             e.printStackTrace();
         }
         return cars;
+    }
+    public static ArrayList<Integer> getYear(){
+        ArrayList<Integer> years = new ArrayList<>();
+
+        String sql = "SELECT dateSold FROM carSales;";
+
+        try (
+                Connection conn = DriverManager.getConnection(connectURL, user, password);
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql);
+        ) {
+            while (resultSet.next()) {
+                LocalDate dateSold = resultSet.getDate("dateSold").toLocalDate();
+
+                years.add(dateSold.getYear());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return years;
     }
 }

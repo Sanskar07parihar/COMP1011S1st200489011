@@ -20,7 +20,9 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 //        launch();
-        ArrayList<CarSold> cars = DBUtility.getCarsFromDB();
-        System.out.println(cars);
+//        ArrayList<CarSold> cars = DBUtility.getCarsFromDB();
+//        System.out.println(cars);
+        ArrayList<Integer> years = DBUtility.getYear();
+        System.out.println(years);
     }
 }
