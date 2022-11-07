@@ -1,11 +1,25 @@
 package com.example.comp1011s1st200489011;
 
+import javafx.event.ActionEvent;
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class DBUtility {
+
+    private static DBUtility m_instance = null;
+
+    private DBUtility() {
+    }
+
+    public static DBUtility Instance() {
+        if (m_instance == null) {
+            m_instance = new DBUtility();
+        }
+        return m_instance;
+    }
     private static String user = DBCredentials.user;
     private static String password = DBCredentials.password;
     private static String connectURL = "jdbc:mysql://127.0.0.1:3306/f22midterm";
@@ -56,5 +70,8 @@ public class DBUtility {
         }
 
         return years;
+    }
+
+    public void changeScene(ActionEvent event, String s) {
     }
 }
